@@ -26,7 +26,7 @@ def parseTime(userTime):
 
 #print(parseTime('01:01:01'))
 #print(len(parseTime('01:01:01')))
-print("If I can see this from main then python executes files when imported before they're even called")
+#print("If I can see this from main then python executes files when imported before they're even called")
 
 def countdown(time):
     parsedTime = parseTime(time)
