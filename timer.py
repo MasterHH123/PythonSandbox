@@ -1,5 +1,6 @@
 import time
 from playsound import playsound
+
 def parseTime(userTime):
     newTime = userTime.split(':')
     parsedTime = {}
