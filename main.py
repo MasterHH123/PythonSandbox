@@ -2,7 +2,7 @@ from timer import countdown
 
 def menuOptions():
     menu = {
-        1: '\033[1;30;45mTimerApp\033[0m',
+        1: '\033[1;30;45mTimer App\033[0m',
         2: '\033[1;30;46mMaybe a database related app\033[0m',
         3: '\033[1;30;42mPerhaps a brev.dev project\033[0m',
         4: '\033[1;30;41mExit\033[0m'

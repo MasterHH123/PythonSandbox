@@ -1,36 +1,32 @@
 import time
-
+from playsound import playsound
 def parseTime(userTime):
+    newTime = userTime.split(':')
     parsedTime = {}
-    if len(userTime) == 8:
+    if len(newTime) == 3:
         parsedTime = {
-            'hours': userTime.split(':')[0],
-            'minutes': userTime.split(':')[1],
-            'seconds': userTime.split(':')[2]
+            'hours': int(newTime[0]),
+            'minutes': int(newTime[1]),
+            'seconds': int(newTime[2])
         }
-    elif len(userTime) == 5:
+    if len(newTime) == 2:
         parsedTime = {
-            'minutes': userTime.split(':')[0],
-            'seconds': userTime.split(':')[1]
+            'minutes': int(newTime[0]),
+            'seconds': int(newTime[1])
         }
-    elif len(userTime) <= 2:
-        if(len(userTime) == 1):
-            parsedTime = {
-                'hours': '0' + userTime[0]
-            }
-        else:
-            parsedTime = {
-                'hours': userTime[0]
-            }
+    if len(newTime) == 1:
+        parsedTime = {
+            'seconds': int(newTime[0])
+        }
     return parsedTime
 
 #print(parseTime('01:01:01'))
 #print(len(parseTime('01:01:01')))
 #print("If I can see this from main then python executes files when imported before they're even called")
 
-def countdown(time):
-    parsedTime = parseTime(time)
-    timeInSeconds = int((parsedTime['hours'] * 3600) + (parsedTime['minutes'] * 60) + (parsedTime['seconds']))
+def countdown(userTime):
+    parsedTime = parseTime(userTime)
+    timeInSeconds = (parsedTime['hours'] * 3600) + (parsedTime['minutes'] * 60) + (parsedTime['seconds'])
 
     while(timeInSeconds > 0 ):
         hours = timeInSeconds // 3600
@@ -41,4 +37,5 @@ def countdown(time):
         time.sleep(1)
         timeInSeconds -= 1
     if timeInSeconds == 0:
-        print(f'---Time is up---')
+        print('\033[1;30;41m---Time is up---\033[0m\n')
+        playsound('alarm-clock-loop-90916.wav')
